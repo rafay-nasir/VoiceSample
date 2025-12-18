@@ -1,0 +1,18 @@
+id: voicesample.ig
+canonical: http://example.org/fhir/voicesample
+name: VoiceSampleIG
+title: VoiceSample Implementation Guide
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+description: Minimal, opinionated FHIR R4 profile and extensions for representing a single clinical voice capture event (VoiceSample) with provenance-friendly downstream reuse.
+publisher:
+  name: VoiceSample IG (draft community workgroup)
+  url: http://example.org/fhir/voicesample
+jurisdiction: urn:iso:std:iso:3166#US "United States"
+releaseLabel: ci-build
+# v0.1 intentionally keeps dependencies minimal.
+dependencies:
+  hl7.fhir.r4.core: 4.0.1
+parameters:
+  path-expansion-params: ../../input/includes/expansion-params.json

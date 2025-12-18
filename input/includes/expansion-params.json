@@ -1,0 +1,10 @@
+{
+  "resourceType": "Parameters",
+  "id": "expansion-params",
+  "parameter": [
+    {
+      "name": "profile-url",
+      "valueUri": "http://example.org/fhir/voicesample"
+    }
+  ]
+}
