@@ -3,16 +3,34 @@ canonical: http://example.org/fhir/voicesample
 name: VoiceSampleIG
 title: VoiceSample Implementation Guide
 status: draft
-version: 0.1.0
+version: 0.2.0
 fhirVersion: 4.0.1
-description: Minimal, opinionated FHIR R4 profile and extensions for representing a single clinical voice capture event (VoiceSample) with provenance-friendly downstream reuse.
-publisher:
-  name: VoiceSample IG (draft community workgroup)
-  url: http://example.org/fhir/voicesample
-jurisdiction: urn:iso:std:iso:3166#US "United States"
+copyrightYear: 2025+
 releaseLabel: ci-build
-# v0.1 intentionally keeps dependencies minimal.
+description: A minimal, opinionated FHIR R4 profile and extensions for representing a single clinical voice capture event (VoiceSample) with the metadata required for reproducible downstream analysis. Non-diagnostic; single-speaker; designed for mobile-device implementability.
+publisher:
+  name: VoiceSample IG (open academic working group)
+  url: http://example.org/fhir/voicesample
+license: Apache-2.0
+jurisdiction: urn:iso:std:iso:3166#US "United States"
+
+# v0.2 keeps dependencies minimal.
 dependencies:
   hl7.fhir.r4.core: 4.0.1
+
 parameters:
   path-expansion-params: ../../input/includes/expansion-params.json
+  path-tx-cache: input/tx-cache
+  show-inherited-invariants: false
+
+menu:
+  Home: index.html
+  Background: background.html
+  Conceptual Model: model.html
+  Artifacts: artifacts.html
+  Design Rationale:
+    Task: task-design.html
+    Environment: environment-design.html
+    Acquisition: acquisition-design.html
+    Preprocessing: preprocessing-design.html
+    Quality: quality-design.html

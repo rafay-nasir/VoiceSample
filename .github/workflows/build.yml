@@ -1,0 +1,36 @@
+name: Build IG
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sushi:
+    name: Compile FSH with SUSHI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install SUSHI
+        run: npm install -g fsh-sushi
+
+      - name: Run SUSHI
+        run: sushi .
+
+      - name: Archive generated artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fsh-generated
+          path: fsh-generated/
+          if-no-files-found: warn
+          retention-days: 14

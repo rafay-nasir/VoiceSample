@@ -3,7 +3,7 @@
 Extension: VoiceSampleEnvironment
 Id: voicesample-environment
 Title: "VoiceSample Environment"
-Description: "Environmental context of the voice recording (setting and notable acoustic conditions). v0.1 uses a small coded setting/noise level plus optional free-text notes."
+Description: "Environmental context of the voice recording (setting and notable conditions). Noise metrics are captured separately in VoiceSampleQuality (SNR in dB, overall usability rating)."
 * ^status = #draft
 * ^context.type = #element
 * ^context.expression = "Media"
@@ -11,16 +11,12 @@ Description: "Environmental context of the voice recording (setting and notable 
 
 * extension contains
     setting 0..1 and
-    noiseLevel 0..1 and
     notes 0..1
 
-* extension[setting] ^short = "Recording setting (clinic, home, etc.)"
+* extension[setting] ^short = "Recording setting (clinic, home, telehealth, research, etc.)"
+* extension[setting] ^definition = "The care setting or location type where the voice recording was captured. References SNOMED CT ActClass and Environment codes (e.g., 373572006 ambulatory care site, 22232009 hospital, 419993002 home-based care). Extensible binding permits other setting codes when SNOMED CT does not cover the use case."
 * extension[setting].value[x] only CodeableConcept
-* extension[setting].valueCodeableConcept from VoiceSampleEnvironmentVS (extensible)
+* extension[setting].valueCodeableConcept from VoiceSampleEnvironmentSettingVS (extensible)
 
-* extension[noiseLevel] ^short = "Approximate background noise level (qualitative)"
-* extension[noiseLevel].value[x] only CodeableConcept
-* extension[noiseLevel].valueCodeableConcept from VoiceSampleNoiseLevelVS (extensible)
-
-* extension[notes] ^short = "Free-text environment notes"
+* extension[notes] ^short = "Free-text environment notes (e.g., 'Quiet exam room, door closed' or 'Home environment, spouse present')"
 * extension[notes].value[x] only string

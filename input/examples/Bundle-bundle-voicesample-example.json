@@ -1,8 +1,8 @@
 {
   "resourceType": "Bundle",
-  "id": "bundle-voicesample-v01-example",
+  "id": "bundle-voicesample-example",
   "type": "collection",
-  "timestamp": "2025-12-01T14:36:00-05:00",
+  "timestamp": "2026-04-28T14:36:00-05:00",
   "entry": [
     {
       "fullUrl": "http://example.org/fhir/voicesample/Patient/pat-1",
@@ -19,9 +19,7 @@
           {
             "use": "official",
             "family": "Example",
-            "given": [
-              "Pat"
-            ]
+            "given": ["Pat"]
           }
         ],
         "gender": "female",
@@ -39,11 +37,19 @@
           ]
         },
         "status": "completed",
-        "type": "audio",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/media-type",
+              "code": "audio",
+              "display": "Audio"
+            }
+          ]
+        },
         "subject": {
           "reference": "Patient/pat-1"
         },
-        "createdDateTime": "2025-12-01T14:32:10-05:00",
+        "createdDateTime": "2026-04-28T14:32:10-05:00",
         "duration": 28,
         "content": {
           "contentType": "audio/wav",
@@ -53,16 +59,24 @@
         "extension": [
           {
             "url": "http://example.org/fhir/voicesample/StructureDefinition/voicesample-task",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://example.org/fhir/voicesample/CodeSystem/voicesample-task-cs",
-                  "code": "sustained-vowel",
-                  "display": "Sustained vowel"
+            "extension": [
+              {
+                "url": "taskCode",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://example.org/fhir/voicesample/CodeSystem/voicesample-task-cs",
+                      "code": "sustained-vowel",
+                      "display": "Sustained vowel"
+                    }
+                  ]
                 }
-              ],
-              "text": "Sustained vowel /a/ for as long as comfortable"
-            }
+              },
+              {
+                "url": "taskProtocol",
+                "valueString": "Sustained phonation of /a/ vowel for as long as comfortable; English (US); standard VoiceSample protocol v0.2."
+              }
+            ]
           },
           {
             "url": "http://example.org/fhir/voicesample/StructureDefinition/voicesample-environment",
@@ -72,79 +86,37 @@
                 "valueCodeableConcept": {
                   "coding": [
                     {
-                      "system": "http://example.org/fhir/voicesample/CodeSystem/voicesample-environment-cs",
-                      "code": "clinic",
-                      "display": "Clinic/ambulatory"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "noiseLevel",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "system": "http://example.org/fhir/voicesample/CodeSystem/voicesample-noiselevel-cs",
-                      "code": "quiet",
-                      "display": "Quiet"
+                      "system": "http://snomed.info/sct",
+                      "code": "373572006",
+                      "display": "Ambulatory care site"
                     }
                   ]
                 }
               },
               {
                 "url": "notes",
-                "valueString": "Quiet exam room; door closed; minimal interruptions."
+                "valueString": "Neurology clinic, private exam room, quiet environment, door closed, minimal interruptions."
               }
             ]
           },
           {
             "url": "http://example.org/fhir/voicesample/StructureDefinition/voicesample-acquisition",
             "extension": [
-              {
-                "url": "sampleRateHz",
-                "valueDecimal": 44100
-              },
-              {
-                "url": "bitDepth",
-                "valuePositiveInt": 16
-              },
-              {
-                "url": "channels",
-                "valuePositiveInt": 1
-              },
-              {
-                "url": "codec",
-                "valueString": "PCM16LE"
-              },
-              {
-                "url": "container",
-                "valueString": "wav"
-              },
-              {
-                "url": "deviceModel",
-                "valueString": "AcmeClinic Tablet Model X"
-              },
-              {
-                "url": "app",
-                "valueString": "VoiceCaptureSDK 0.1"
-              }
+              { "url": "sampleRateHz", "valueDecimal": 44100 },
+              { "url": "bitDepth",     "valuePositiveInt": 16 },
+              { "url": "channels",     "valuePositiveInt": 1 },
+              { "url": "codec",        "valueString": "PCM16LE" },
+              { "url": "container",    "valueString": "wav" },
+              { "url": "deviceModel",  "valueString": "AcmeClinic Tablet Model X" },
+              { "url": "app",          "valueString": "VoiceCaptureSDK 0.2" }
             ]
           },
           {
             "url": "http://example.org/fhir/voicesample/StructureDefinition/voicesample-preprocessing",
             "extension": [
-              {
-                "url": "applied",
-                "valueBoolean": true
-              },
-              {
-                "url": "pipelineName",
-                "valueString": "CaptureApp DSP"
-              },
-              {
-                "url": "pipelineVersion",
-                "valueString": "0.1.0"
-              },
+              { "url": "applied",         "valueBoolean": true },
+              { "url": "pipelineName",    "valueString": "CaptureApp DSP" },
+              { "url": "pipelineVersion", "valueString": "0.2.0" },
               {
                 "url": "step",
                 "valueCodeableConcept": {
@@ -190,23 +162,35 @@
                   ]
                 }
               },
-              {
-                "url": "snrDb",
-                "valueDecimal": 32.1
-              },
-              {
-                "url": "clippingPercent",
-                "valueDecimal": 0.2
-              },
-              {
-                "url": "speechPercent",
-                "valueDecimal": 95.0
-              },
-              {
-                "url": "notes",
-                "valueString": "No audible clipping; stable phonation."
-              }
+              { "url": "snrDb",           "valueDecimal": 32.1 },
+              { "url": "clippingPercent", "valueDecimal": 0.2 },
+              { "url": "speechPercent",   "valueDecimal": 95.0 },
+              { "url": "notes",           "valueString": "No audible clipping; stable phonation." }
             ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/voicesample/Provenance/prov-voicesample-1",
+      "resource": {
+        "resourceType": "Provenance",
+        "id": "prov-voicesample-1",
+        "target": [
+          { "reference": "Media/voicesample-1" }
+        ],
+        "recorded": "2026-04-28T14:32:11-05:00",
+        "activity": {
+          "text": "Voice capture (clinical recording)"
+        },
+        "agent": [
+          {
+            "type": { "text": "Software" },
+            "who":  { "display": "VoiceCaptureSDK 0.2 (clinic tablet)" }
+          },
+          {
+            "type": { "text": "Recording operator" },
+            "who":  { "display": "Clinical staff (Practitioner reference omitted in example)" }
           }
         ]
       }
@@ -223,8 +207,8 @@
         "subject": {
           "reference": "Patient/pat-1"
         },
-        "effectiveDateTime": "2025-12-01T14:32:10-05:00",
-        "issued": "2025-12-01T14:35:00-05:00",
+        "effectiveDateTime": "2026-04-28T14:32:10-05:00",
+        "issued": "2026-04-28T14:35:00-05:00",
         "valueQuantity": {
           "value": 144.2,
           "unit": "Hz",
@@ -235,9 +219,7 @@
           "text": "Autocorrelation pitch tracking (window=40ms, hop=10ms)"
         },
         "derivedFrom": [
-          {
-            "reference": "Media/voicesample-1"
-          }
+          { "reference": "Media/voicesample-1" }
         ],
         "note": [
           {
@@ -252,30 +234,22 @@
         "resourceType": "Provenance",
         "id": "prov-voiceobs-1",
         "target": [
-          {
-            "reference": "Observation/voiceobs-1"
-          }
+          { "reference": "Observation/voiceobs-1" }
         ],
-        "recorded": "2025-12-01T14:35:02-05:00",
+        "recorded": "2026-04-28T14:35:02-05:00",
         "activity": {
           "text": "Voice feature extraction"
         },
         "agent": [
           {
-            "type": {
-              "text": "Software"
-            },
-            "who": {
-              "display": "VoiceFeatureExtractor 0.1 (container image sha256:... redacted)"
-            }
+            "type": { "text": "Software" },
+            "who":  { "display": "VoiceFeatureExtractor 0.2 (container image sha256:... redacted)" }
           }
         ],
         "entity": [
           {
             "role": "source",
-            "what": {
-              "reference": "Media/voicesample-1"
-            }
+            "what": { "reference": "Media/voicesample-1" }
           }
         ]
       }

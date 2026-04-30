@@ -2,9 +2,9 @@
   "resourceType": "Parameters",
   "id": "expansion-params",
   "parameter": [
-    {
-      "name": "profile-url",
-      "valueUri": "http://example.org/fhir/voicesample"
-    }
+    { "name": "activeOnly", "valueBoolean": true },
+    { "name": "excludeNested", "valueBoolean": false },
+    { "name": "includeDesignations", "valueBoolean": true },
+    { "name": "includeDefinition", "valueBoolean": false }
   ]
 }

@@ -1,0 +1,27 @@
+VoiceSample Implementation Guide
+Copyright 2025-2026 The VoiceSample Authors
+
+This product is licensed under the Apache License, Version 2.0 (the "License");
+you may not use this product except in compliance with the License. A copy of
+the License is included in the LICENSE file at the root of this repository,
+and may also be obtained at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+----
+
+This project is an open academic draft. It references and acknowledges:
+
+- HL7 FHIR R4 (HL7 International, http://hl7.org/fhir/r4/) under HL7's terms.
+- SNOMED CT (SNOMED International) - referenced in terminology but not redistributed.
+  Use of SNOMED CT codes requires an accepted SNOMED CT license in your jurisdiction.
+- LOINC (Regenstrief Institute) - referenced as a future-binding target; not redistributed.
+- The Bridge2AI Voice Consortium (NIH Common Fund) - referenced as a recommended
+  external code source for task identifiers.
+- The international VOCAL Initiative (Awan et al., 2025) - referenced for terminology
+  alignment.
